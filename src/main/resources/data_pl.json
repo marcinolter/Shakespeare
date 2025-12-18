@@ -1,0 +1,360 @@
+{
+  "questions": {
+    "Q_START": {
+      "text": "Co chcesz dzisiaj robić?",
+      "options": {
+        "OPT_NAP": "Zdrzemnąć się",
+        "OPT_LAUGH": "Śmiać się",
+        "OPT_CRY": "Płakać",
+        "OPT_SWORDS": "Oglądać facetów machających mieczami",
+        "OPT_ALL": "Wszystko powyższe naraz"
+      }
+    },
+    "Q_MURDER_COMEDY": {
+      "text": "Czy morderstwo, ćwiartowanie i kanibalizm są...",
+      "options": {
+        "OPT_DISTURBING": "Niepokojące!",
+        "OPT_HILARIOUS": "Zabawne!"
+      }
+    },
+    "Q_CROSS_DRESSING": {
+      "text": "Co sądzisz o przebierankach (kobiety za mężczyzn)?",
+      "options": {
+        "OPT_XDRESS_YES": "Tak!",
+        "OPT_XDRESS_NO": "Nie."
+      }
+    },
+    "Q_TWINS": {
+      "text": "Bliźniaki?",
+      "options": {
+        "OPT_TWINS_AWESOME": "Super!",
+        "OPT_TWINS_NO": "Nie! Żadnych bliźniaków!"
+      }
+    },
+    "Q_TWINS_OPINION": {
+      "text": "A co powiesz na bliźniaków?",
+      "options": {
+        "OPT_TWINS_CONTRIVED": "Mocno naciągane...",
+        "OPT_TWINS_FUN": "Brzmi jak świetna zabawa!"
+      }
+    },
+    "Q_FOREST": {
+      "text": "Czy sztuka może dziać się w lesie?",
+      "options": {
+        "OPT_FOREST_YES": "O tak, kocham lasy.",
+        "OPT_FOREST_NO": "Czemu nie w mieście dla odmiany?"
+      }
+    },
+    "Q_FOREST_WHO": {
+      "text": "Kogo wolisz spotkać w lesie?",
+      "options": {
+        "OPT_SHEPHERDS": "Pasterzy",
+        "OPT_BANDITS": "Bandytów"
+      }
+    },
+    "Q_LOVERS": {
+      "text": "Wow, jesteś wymagający. To jakich lubisz kochanków?",
+      "options": {
+        "OPT_LOV_EDUCATED": "Przeedukowanych",
+        "OPT_LOV_QUARREL": "Kłótliwych",
+        "OPT_LOV_RELUCTANT": "Niechętnych",
+        "OPT_LOV_MARRIED": "Już po ślubie"
+      }
+    },
+    "Q_QUARREL_TYPE": {
+      "text": "Jak bardzo kłótliwych?",
+      "options": {
+        "OPT_QUARREL_VIOLENT": "Agresywnie kłótliwych",
+        "OPT_QUARREL_ARGUE": "Nie, po prostu lubią dyskutować"
+      }
+    },
+    "Q_NUN": {
+      "text": "Czy w sprawę zamieszana jest zakonnica?",
+      "options": {
+        "OPT_NUN_MAYBE": "...może?",
+        "OPT_NUN_WEIRD": "Co?! Nie! To dziwne!"
+      }
+    },
+    "Q_MAGIC": {
+      "text": "Co powiesz na magię?",
+      "options": {
+        "OPT_MAGIC_YES": "Uwielbiam magię!",
+        "OPT_MAGIC_NO": "Nie ma czegoś takiego jak magia"
+      }
+    },
+    "Q_MAGIC_OPINION": {
+      "text": "Jaką magię lubisz?",
+      "options": {
+        "OPT_MAGIC_OPINION_ILLUSION": "Iluzje",
+        "OPT_MAGIC_OPINION_FAIRIES": "Wróżki",
+        "OPT_MAGIC_OPINION_MIRACLES": "Cuda"
+      }
+    },
+    "Q_REVENGE": {
+      "text": "Jaka jest twoja opinia o zemście?",
+      "options": {
+        "OPT_REV_BEST": "Jest najlepsza!",
+        "OPT_REV_POINTLESS": "Jest bez sensu."
+      }
+    },
+    "Q_DEATH_TOLL": {
+      "text": "Ile trupów preferujesz?",
+      "options": {
+        "OPT_DEATH_HIGH": "Krwawa łaźnia",
+        "OPT_DEATH_MODERATE": "Umiarkowanie",
+        "OPT_DEATH_LOW": "Mało, jestem wrażliwy"
+    }
+  },
+  "Q_IMPORTANT": {
+      "text": "Co jest dla Ciebie najważniejsze?",
+      "options": {
+        "OPT_IMP_LOVE": "Miłość",
+        "OPT_IMP_FAMILY": "Rodzina",
+        "OPT_IMP_POWER": "Władza"
+      }
+    },
+    "Q_LOVE_TYPE": {
+      "text": "Jaki rodzaj miłości?",
+      "options": {
+        "OPT_LOVE_STUPID": "Głupia i niedojrzała",
+        "OPT_LOVE_MATURE": "Głupia i dojrzała",
+        "OPT_LOVE_JEALOUS": "Chora z zazdrości"
+      }
+    },
+    "Q_PARENT": {
+      "text": "Wybierz rodzica z problemami:",
+      "options": {
+        "OPT_MUM": "Mama",
+        "OPT_DAD": "Tata"
+      }
+    },
+    "Q_WORK_WITH": {
+      "text": "Z kim najlepiej ci się pracuje?",
+      "options": {
+        "OPT_WORK_FRIENDS": "Z przyjaciółmi",
+        "OPT_WORK_SO": "Z drugą połówką",
+        "OPT_WORK_HATED": "Wszyscy mnie nienawidzą"
+      }
+    },
+    "Q_HISTORY_OPINION": {
+      "text": "Czy angielska historia nie jest wspaniała?",
+      "options": {
+        "OPT_HIST_YES": "Oczywiście!",
+        "OPT_HIST_CLASSICS": "Eee, wolę klasykę.",
+        "OPT_HIST_DUNNO": "Um, nie wiem..."
+      }
+    },
+    "Q_CLASSICS_PREF": {
+      "text": "Co wolisz w klasyce?",
+      "options": {
+        "OPT_CLASSIC_SHIP": "Statki, piraci i prostytutki",
+        "OPT_CLASSIC_CHAUCER": "Coś w stylu Chaucera"
+      }
+    },
+    "Q_EXCOMMUNICATION": {
+      "text": "Czy ekskomunika jest ekscytująca?",
+      "options": {
+        "OPT_EX_YES": "Jeszcze jak!",
+        "OPT_EX_NO": "Nudaaaaa"
+      }
+    },
+    "Q_TIME": {
+      "text": "Ile masz czasu?",
+      "options": {
+        "OPT_TIME_FEW": "Parę godzin",
+        "OPT_TIME_WEEK": "Mam cały tydzień!"
+      }
+    },
+    "Q_GOOD_BAD_GUYS": {
+      "text": "Wolisz dobrych czy złych gości?",
+      "options": {
+        "OPT_GUYS_GOOD": "Dobrych",
+        "OPT_GUYS_BAD": "Złych"
+      }
+    },
+    "Q_WEEK_PREF": {
+      "text": "Co wolisz na długi maraton?",
+      "options": {
+        "OPT_WEEK_AGE": "Opowieści o dorastaniu",
+        "OPT_WEEK_BATTLES": "Mnóstwo bitew"
+      }
+    }
+  },
+  "recommendations": {
+    "REC_HENRY_VIII": {
+      "title": "Henryk VIII",
+      "description": "Idealna sztuka na drzemkę.",
+      "image": "henry8.jpg"
+    },
+    "REC_CYMBELINE": {
+      "title": "Cymbeline",
+      "description": "Ma wszystko: rzymian, truciznę, braci... wszystko!",
+      "image": "cymbeline.jpg"
+    },
+    "REC_TITUS": {
+      "title": "Tytus Andronikus",
+      "description": "Najkrwawsza sztuka Szekspira. Smacznego kanibalizmu!",
+      "image": "titus.jpg"
+    },
+    "REC_TWELFTH_NIGHT": {
+      "title": "Wieczór Trzech Króli",
+      "description": "Bliźniaki, przebieranki i żółte pończochy!",
+      "image": "twelfth_night.jpg"
+    },
+    "REC_COMEDY_ERRORS": {
+      "title": "Komedia Omyłek",
+      "description": "Dwie pary bliźniaków to podwójna zabawa (i chaos).",
+      "image": "comedy_errors.jpg"
+    },
+    "REC_AS_YOU_LIKE_IT": {
+      "title": "Jak wam się podoba",
+      "description": "Ucieczka do lasu Ardeńskiego i miłosne perypetie.",
+      "image": "as_you_like_it.jpg"
+    },
+    "REC_TWO_GENTLEMEN": {
+      "title": "Dwaj Panowie z Werony",
+      "description": "Przyjaźń, zdrada i pies Crab.",
+      "image": "two_gentlemen.jpg"
+    },
+    "REC_MERCHANT": {
+      "title": "Kupiec Wenecki",
+      "description": "Jeśli nie lubisz lasów. Trochę mroczna komedia.",
+      "image": "merchant.jpg"
+    },
+    "REC_TEMPEST": {
+      "title": "Burza",
+      "description": "Magia iluzji, czarodziej Prospero i duchy na wyspie.",
+      "image": "tempest.jpg"
+    },
+    "REC_MIDSUMMER": {
+      "title": "Sen nocy letniej",
+      "description": "Wróżki, magia i osioł.",
+      "image": "midsummer.jpg"
+    },
+    "REC_WINTERS_TALE": {
+      "title": "Zimowa opowieść",
+      "description": "Cuda, zazdrość i posąg, który ożywa.",
+      "image": "winters_tale.jpg"
+    },
+    "REC_LOVES_LABOURS": {
+      "title": "Stracone zachody miłości",
+      "description": "Mnóstwo inteligentnego gadania, mało akcji.",
+      "image": "loves_labours.jpg"
+    },
+    "REC_MERRY_WIVES": {
+      "title": "Wesołe kumoszki z Windsoru",
+      "description": "Jedyna komedia mieszczańska. Falstaff w koszu na bieliznę.",
+      "image": "merry_wives.jpg"
+    },
+    "REC_TAMING_SHREW": {
+      "title": "Poskromienie złośnicy",
+      "description": "Ostra wymiana zdań i kontrowersyjne metody wychowawcze.",
+      "image": "taming.jpg"
+    },
+    "REC_MUCH_ADO": {
+      "title": "Wiele hałasu o nic",
+      "description": "Najlepsze kłótnie kochanków w historii teatru.",
+      "image": "much_ado.jpg"
+    },
+    "REC_MEASURE": {
+      "title": "Miarka za miarkę",
+      "description": "Problem moralny z zakonnicą w tle.",
+      "image": "measure.jpg"
+    },
+    "REC_ALLS_WELL": {
+      "title": "Wszystko dobre, co się dobrze kończy",
+      "description": "Dziwna historia o zdobywaniu męża podstępem.",
+      "image": "alls_well.jpg"
+    },
+    "REC_HAMLET": {
+      "title": "Hamlet",
+      "description": "Reszta jest milczeniem. I czaszkami.",
+      "image": "hamlet.jpg"
+    },
+    "REC_TIMON": {
+      "title": "Tymon Ateńczyk",
+      "description": "Sztuka o tym, jak stracić pieniądze i przyjaciół.",
+      "image": "timon.jpg"
+    },
+    "REC_ROMEO": {
+      "title": "Romeo i Julia",
+      "description": "Niedojrzała miłość, która kończy się źle.",
+      "image": "romeo.jpg"
+    },
+    "REC_ANTONY": {
+      "title": "Antoniusz i Kleopatra",
+      "description": "Dojrzała miłość, polityka i węże.",
+      "image": "antony.jpg"
+    },
+    "REC_OTHELLO": {
+      "title": "Otello",
+      "description": "Jak zazdrość niszczy życie. Uwaga na chusteczki.",
+      "image": "othello.jpg"
+    },
+    "REC_CORIOLANUS": {
+      "title": "Koriolan",
+      "description": "Wielki wojownik, który słucha tylko swojej matki.",
+      "image": "coriolanus.jpg"
+    },
+    "REC_LEAR": {
+      "title": "Król Lear",
+      "description": "Problemy z podziałem majątku i niewdzięcznymi córkami.",
+      "image": "lear.jpg"
+    },
+    "REC_JULIUS": {
+      "title": "Juliusz Cezar",
+      "description": "Uważaj na przyjaciół z nożami.",
+      "image": "julius.jpg"
+    },
+    "REC_MACBETH": {
+      "title": "Makbet",
+      "description": "Wiedźmy, ambicja i morderstwo króla.",
+      "image": "macbeth.jpg"
+    },
+    "REC_RICHARD_II": {
+      "title": "Ryszard II",
+      "description": "Poetycki król, który traci koronę.",
+      "image": "richard2.jpg"
+    },
+    "REC_KING_JOHN": {
+      "title": "Król Jan",
+      "description": "Polityka, kościół i Magna Carta (choć jej tam nie ma).",
+      "image": "king_john.jpg"
+    },
+    "REC_HENRY_IV": {
+      "title": "Henryk IV (cz. 1 i 2)",
+      "description": "Dorastanie księcia Hala i wybryki Falstaffa.",
+      "image": "henry4.jpg"
+    },
+    "REC_HENRY_VI": {
+      "title": "Henryk VI (cz. 1, 2 i 3)",
+      "description": "Wojna Dwóch Róż. Mnóstwo bitew.",
+      "image": "henry6.jpg"
+    },
+    "REC_HENRY_V": {
+      "title": "Henryk V",
+      "description": "Dla chwały Anglii! Przemowy zagrzewające do walki.",
+      "image": "henry5.jpg"
+    },
+    "REC_RICHARD_III": {
+      "title": "Ryszard III",
+      "description": "Królestwo za konia! Najlepszy czarny charakter.",
+      "image": "richard3.jpg"
+    },
+    "REC_TROILUS": {
+      "title": "Troilus i Kresyda",
+      "description": "Wojna trojańska bez lukru.",
+      "image": "troilus.jpg"
+    },
+    "REC_PERICLES": {
+      "title": "Perykles, książę Tyru",
+      "description": "Statki, burze, piraci i zagadki.",
+      "image": "pericles.jpg"
+    },
+    "REC_TWO_KINSMEN": {
+      "title": "Dwóch szlachetnych krewnych",
+      "description": "Rycerze walczący o damę w stylu Chaucera.",
+      "image": "two_kinsmen.jpg"
+    }
+  }
+}

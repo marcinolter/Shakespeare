@@ -1,0 +1,360 @@
+{
+  "questions": {
+    "Q_START": {
+      "text": "What do you want to do?",
+      "options": {
+        "OPT_NAP": "Take a nap",
+        "OPT_LAUGH": "Laugh",
+        "OPT_CRY": "Cry",
+        "OPT_SWORDS": "Watch guys run around with swords",
+        "OPT_ALL": "All of the above"
+      }
+    },
+    "Q_MURDER_COMEDY": {
+      "text": "Do you find murder, dismemberment and cannibalism...",
+      "options": {
+        "OPT_DISTURBING": "Disturbing!",
+        "OPT_HILARIOUS": "Hilarious!"
+      }
+    },
+    "Q_CROSS_DRESSING": {
+      "text": "Cross-dressing: Yea or Nay?",
+      "options": {
+        "OPT_XDRESS_YES": "Yes!",
+        "OPT_XDRESS_NO": "Nay."
+      }
+    },
+    "Q_TWINS": {
+      "text": "Twins?",
+      "options": {
+        "OPT_TWINS_AWESOME": "Twins are awesome.",
+        "OPT_TWINS_NO": "No! No twins!"
+      }
+    },
+    "Q_TWINS_OPINION": {
+      "text": "How about twins?",
+      "options": {
+        "OPT_TWINS_CONTRIVED": "How contrived.",
+        "OPT_TWINS_FUN": "Sounds like fun!"
+      }
+    },
+    "Q_FOREST": {
+      "text": "Can it be set in a forest?",
+      "options": {
+        "OPT_FOREST_YES": "Oooh, yes, I love forests.",
+        "OPT_FOREST_NO": "Why not in a city, for a change?"
+      }
+    },
+    "Q_FOREST_WHO": {
+      "text": "Who is in the forest?",
+      "options": {
+        "OPT_SHEPHERDS": "Shepherds.",
+        "OPT_BANDITS": "Bandits."
+      }
+    },
+    "Q_LOVERS": {
+      "text": "Wow, you're a tough crowd. How do you like your lovers?",
+      "options": {
+        "OPT_LOV_EDUCATED": "Over-educated.",
+        "OPT_LOV_QUARREL": "Quarrelsome.",
+        "OPT_LOV_RELUCTANT": "Reluctant.",
+        "OPT_LOV_MARRIED": "Married."
+      }
+    },
+    "Q_QUARREL_TYPE": {
+      "text": "Violently quarrelsome?",
+      "options": {
+        "OPT_QUARREL_VIOLENT": "Bring it on!",
+        "OPT_QUARREL_ARGUE": "No, just argumentative."
+      }
+    },
+    "Q_NUN": {
+      "text": "Is there a nun involved?",
+      "options": {
+        "OPT_NUN_MAYBE": "...maybe?",
+        "OPT_NUN_WEIRD": "What! Not! That's weird!"
+      }
+    },
+    "Q_MAGIC": {
+      "text": "Picky picky. How about magic?",
+      "options": {
+        "OPT_MAGIC_YES": "Oooo, I love magic!",
+        "OPT_MAGIC_NO": "There's no such thing."
+      }
+    },
+    "Q_MAGIC_OPINION": {
+      "text": "What kind of magic do you like?",
+      "options": {
+        "OPT_MAGIC_OPINION_ILLUSION": "Illusion!",
+        "OPT_MAGIC_OPINION_FAIRIES": "Fairies!",
+        "OPT_MAGIC_OPINION_MIRACLES": "Miracles!"
+      }
+    },
+    "Q_REVENGE": {
+      "text": "What's your opinion on revenge?",
+      "options": {
+        "OPT_REV_BEST": "It's the best!",
+        "OPT_REV_POINTLESS": "It's pointless."
+      }
+    },
+    "Q_DEATH_TOLL": {
+      "text": "How do you like your death tolls?",
+      "options": {
+        "OPT_DEATH_HIGH": "High! Bring on the bloodbath!",
+        "OPT_DEATH_MODERATE": "Moderate, with a side of angst.",
+        "OPT_DEATH_LOW": "Very low. I'm squeamish."
+    }
+  },
+  "Q_IMPORTANT": {
+      "text": "What is the most important to you?",
+      "options": {
+        "OPT_IMP_LOVE": "Love.",
+        "OPT_IMP_FAMILY": "Family.",
+        "OPT_IMP_POWER": "Power."
+      }
+    },
+    "Q_LOVE_TYPE": {
+      "text": "Which is the best type of love?",
+      "options": {
+        "OPT_LOVE_STUPID": "Stupid immature love",
+        "OPT_LOVE_MATURE": "Stupid mature love",
+        "OPT_LOVE_JEALOUS": "Jealous obsession"
+      }
+    },
+    "Q_PARENT": {
+      "text": "Pick a parent:",
+      "options": {
+        "OPT_MUM": "Mum.",
+        "OPT_DAD": "Dad."
+      }
+    },
+    "Q_WORK_WITH": {
+      "text": "Who do you work best with?",
+      "options": {
+        "OPT_WORK_FRIENDS": "Friends.",
+        "OPT_WORK_SO": "Significant other.",
+        "OPT_WORK_HATED": "Everyone hates me."
+      }
+    },
+    "Q_HISTORY_OPINION": {
+      "text": "Isn't English history awesome?",
+      "options": {
+        "OPT_HIST_YES": "It really is!",
+        "OPT_HIST_CLASSICS": "Eh, I prefer the classics.",
+        "OPT_HIST_DUNNO": "Um, I dunno..."
+      }
+    },
+    "Q_CLASSICS_PREF": {
+      "text": "I just want...",
+      "options": {
+        "OPT_CLASSIC_SHIP": "A nice story with shipwrecks and pirates",
+        "OPT_CLASSIC_CHAUCER": "Anything more Chaucer-y!"
+      }
+    },
+    "Q_EXCOMMUNICATION": {
+      "text": "Is excommunication exciting?",
+      "options": {
+        "OPT_EX_YES": "Wow! Is it ever!",
+        "OPT_EX_NO": "Boooring."
+      }
+    },
+    "Q_TIME": {
+      "text": "How much time do you have?",
+      "options": {
+        "OPT_TIME_FEW": "Just a few hours.",
+        "OPT_TIME_WEEK": "I'm here all week!"
+      }
+    },
+    "Q_GOOD_BAD_GUYS": {
+      "text": "Do you like good guys or bad boys?",
+      "options": {
+        "OPT_GUYS_GOOD": "Good guys.",
+        "OPT_GUYS_BAD": "Bad boys."
+      }
+    },
+    "Q_WEEK_PREF": {
+      "text": "Which do you prefer?",
+      "options": {
+        "OPT_WEEK_AGE": "Coming of age journeys.",
+        "OPT_WEEK_BATTLES": "Just lots and lots of battles."
+      }
+    }
+  },
+  "recommendations": {
+    "REC_HENRY_VIII": {
+      "title": "Henry VIII",
+      "description": "Take a nap.",
+      "image": "henry8.jpg"
+    },
+    "REC_CYMBELINE": {
+      "title": "Cymbeline",
+      "description": "It has everything: romans, poison, brothers...",
+      "image": "cymbeline.jpg"
+    },
+    "REC_TITUS": {
+      "title": "Titus Andronicus",
+      "description": "Murder, dismemberment and cannibalism!",
+      "image": "titus.jpg"
+    },
+    "REC_TWELFTH_NIGHT": {
+      "title": "Twelfth Night",
+      "description": "Twins are awesome!",
+      "image": "twelfth_night.jpg"
+    },
+    "REC_COMEDY_ERRORS": {
+      "title": "The Comedy of Errors",
+      "description": "Double the twins, double the fun.",
+      "image": "comedy_errors.jpg"
+    },
+    "REC_AS_YOU_LIKE_IT": {
+      "title": "As You Like It",
+      "description": "Shepherds in the forest.",
+      "image": "as_you_like_it.jpg"
+    },
+    "REC_TWO_GENTLEMEN": {
+      "title": "The Two Gentlemen of Verona",
+      "description": "Bandits in the forest.",
+      "image": "two_gentlemen.jpg"
+    },
+    "REC_MERCHANT": {
+      "title": "The Merchant of Venice",
+      "description": "City setting, slightly dark.",
+      "image": "merchant.jpg"
+    },
+    "REC_TEMPEST": {
+      "title": "The Tempest",
+      "description": "Illusion magic.",
+      "image": "tempest.jpg"
+    },
+    "REC_MIDSUMMER": {
+      "title": "A Midsummer Night's Dream",
+      "description": "Fairies!",
+      "image": "midsummer.jpg"
+    },
+    "REC_WINTERS_TALE": {
+      "title": "The Winter's Tale",
+      "description": "Miracles!",
+      "image": "winters_tale.jpg"
+    },
+    "REC_LOVES_LABOURS": {
+      "title": "Love's Labour's Lost",
+      "description": "Over-educated lovers.",
+      "image": "loves_labours.jpg"
+    },
+    "REC_MERRY_WIVES": {
+      "title": "The Merry Wives of Windsor",
+      "description": "Married lovers.",
+      "image": "merry_wives.jpg"
+    },
+    "REC_TAMING_SHREW": {
+      "title": "The Taming of the Shrew",
+      "description": "Violently quarrelsome.",
+      "image": "taming.jpg"
+    },
+    "REC_MUCH_ADO": {
+      "title": "Much Ado About Nothing",
+      "description": "Just argumentative.",
+      "image": "much_ado.jpg"
+    },
+    "REC_MEASURE": {
+      "title": "Measure for Measure",
+      "description": "Maybe a nun involved?",
+      "image": "measure.jpg"
+    },
+    "REC_ALLS_WELL": {
+      "title": "All's Well That Ends Well",
+      "description": "A weird nun situation.",
+      "image": "alls_well.jpg"
+    },
+    "REC_HAMLET": {
+      "title": "Hamlet",
+      "description": "Moderate death toll with a side of angst.",
+      "image": "hamlet.jpg"
+    },
+    "REC_TIMON": {
+      "title": "Timon of Athens",
+      "description": "Very low death toll. I'm squeamish.",
+      "image": "timon.jpg"
+    },
+    "REC_ROMEO": {
+      "title": "Romeo and Juliet",
+      "description": "Stupid immature love.",
+      "image": "romeo.jpg"
+    },
+    "REC_ANTONY": {
+      "title": "Antony and Cleopatra",
+      "description": "Stupid mature love.",
+      "image": "antony.jpg"
+    },
+    "REC_OTHELLO": {
+      "title": "Othello",
+      "description": "Jealous obsession.",
+      "image": "othello.jpg"
+    },
+    "REC_CORIOLANUS": {
+      "title": "Coriolanus",
+      "description": "Mommy issues.",
+      "image": "coriolanus.jpg"
+    },
+    "REC_LEAR": {
+      "title": "King Lear",
+      "description": "Daddy issues.",
+      "image": "lear.jpg"
+    },
+    "REC_JULIUS": {
+      "title": "Julius Caesar",
+      "description": "Work with friends (who stab you).",
+      "image": "julius.jpg"
+    },
+    "REC_MACBETH": {
+      "title": "Macbeth",
+      "description": "Work with significant other.",
+      "image": "macbeth.jpg"
+    },
+    "REC_RICHARD_II": {
+      "title": "Richard II",
+      "description": "Everyone hates me.",
+      "image": "richard2.jpg"
+    },
+    "REC_KING_JOHN": {
+      "title": "King John",
+      "description": "Excommunication is exciting!",
+      "image": "king_john.jpg"
+    },
+    "REC_HENRY_IV": {
+      "title": "Henry IV (parts 1 & 2)",
+      "description": "Coming of age journeys.",
+      "image": "henry4.jpg"
+    },
+    "REC_HENRY_VI": {
+      "title": "Henry VI (parts 1, 2 & 3)",
+      "description": "Just lots and lots of battles.",
+      "image": "henry6.jpg"
+    },
+    "REC_HENRY_V": {
+      "title": "Henry V",
+      "description": "Good guys.",
+      "image": "henry5.jpg"
+    },
+    "REC_RICHARD_III": {
+      "title": "Richard III",
+      "description": "Bad boys.",
+      "image": "richard3.jpg"
+    },
+    "REC_TROILUS": {
+      "title": "Troilus and Cressida",
+      "description": "The classics.",
+      "image": "troilus.jpg"
+    },
+    "REC_PERICLES": {
+      "title": "Pericles, Prince of Tyre",
+      "description": "Shipwrecks, pirates and prostitutes.",
+      "image": "pericles.jpg"
+    },
+    "REC_TWO_KINSMEN": {
+      "title": "The Two Noble Kinsmen",
+      "description": "Chaucer-y.",
+      "image": "two_kinsmen.jpg"
+    }
+  }
+}

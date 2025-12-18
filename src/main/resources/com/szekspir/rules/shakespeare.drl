@@ -1,0 +1,776 @@
+package com.szekspir.rules
+
+dialect "java"
+
+import java.util.List;
+import java.util.ArrayList;
+
+declare UiQuestion
+    id : String
+    answers : List
+end
+
+declare UserAnswer
+    questionId : String
+    selectedOption : String
+end
+
+declare Recommendation
+    recId : String
+end
+
+// --- Furtka ---
+declare UserRejected
+    recId : String
+end
+
+// --- Komendy UI (np. restart sesji) ---
+declare UiCommand
+    name : String
+end
+
+// =========================================================
+// === INICJALIZACJA I CZYSZCZENIE ===
+// =========================================================
+
+rule "INIT: Start System"
+when
+    not UiQuestion()
+    not Recommendation()
+    not UserAnswer()
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_NAP");
+    opts.add("OPT_LAUGH");
+    opts.add("OPT_CRY");
+    opts.add("OPT_SWORDS");
+    opts.add("OPT_ALL");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_START");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "CLEANUP: Remove answered question"
+salience 100
+when
+    $ans : UserAnswer($qid : questionId)
+    $q : UiQuestion(id == $qid)
+then
+    retract($q);
+end
+
+rule "CLEANUP: On reject remove recommendation"
+salience 90
+when
+    UserRejected()
+    $r : Recommendation()
+then
+    retract($r);
+end
+
+// =========================================================
+// === START: G£ÓWNE DECYZJE ===
+// =========================================================
+
+rule "Rec: Nap -> Henry VIII"
+when
+    UserAnswer(questionId == "Q_START", selectedOption == "OPT_NAP")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_HENRY_VIII");
+    insert(r);
+end
+
+rule "Rec: All -> Cymbeline"
+when
+    UserAnswer(questionId == "Q_START", selectedOption == "OPT_ALL")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_CYMBELINE");
+    insert(r);
+end
+
+rule "Path: Cry -> Ask Revenge"
+when
+    UserAnswer(questionId == "Q_START", selectedOption == "OPT_CRY")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_REV_BEST");
+    opts.add("OPT_REV_POINTLESS");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_REVENGE");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Path: Swords -> Ask History"
+when
+    UserAnswer(questionId == "Q_START", selectedOption == "OPT_SWORDS")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_HIST_YES");
+    opts.add("OPT_HIST_CLASSICS");
+    opts.add("OPT_HIST_DUNNO");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_HISTORY_OPINION");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Path: Laugh -> Ask Murder"
+when
+    UserAnswer(questionId == "Q_START", selectedOption == "OPT_LAUGH")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_DISTURBING");
+    opts.add("OPT_HILARIOUS");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_MURDER_COMEDY");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+// =========================================================
+// === SEKCJA KOMEDII (LAUGH) ===
+// =========================================================
+
+rule "Rec: Murder Hilarious -> Titus"
+when
+    UserAnswer(questionId == "Q_MURDER_COMEDY", selectedOption == "OPT_HILARIOUS")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TITUS");
+    insert(r);
+end
+
+rule "Path: Murder Disturbing -> Cross Dressing"
+when
+    UserAnswer(questionId == "Q_MURDER_COMEDY", selectedOption == "OPT_DISTURBING")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_XDRESS_YES");
+    opts.add("OPT_XDRESS_NO");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_CROSS_DRESSING");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Path: Cross-dress YES -> Twins Simple"
+when
+    UserAnswer(questionId == "Q_CROSS_DRESSING", selectedOption == "OPT_XDRESS_YES")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_TWINS_AWESOME");
+    opts.add("OPT_TWINS_NO");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_TWINS");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Path: Cross-dress NO -> Twins Opinion"
+when
+    UserAnswer(questionId == "Q_CROSS_DRESSING", selectedOption == "OPT_XDRESS_NO")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_TWINS_CONTRIVED");
+    opts.add("OPT_TWINS_FUN");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_TWINS_OPINION");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Twins Awesome -> Twelfth Night"
+when
+    UserAnswer(questionId == "Q_TWINS", selectedOption == "OPT_TWINS_AWESOME")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TWELFTH_NIGHT");
+    insert(r);
+end
+
+rule "Path: Twins NO -> Ask Forest"
+when
+    UserAnswer(questionId == "Q_TWINS", selectedOption == "OPT_TWINS_NO")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_FOREST_YES");
+    opts.add("OPT_FOREST_NO");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_FOREST");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Path: Twins Contrived -> Magic"
+when
+    UserAnswer(questionId == "Q_TWINS_OPINION", selectedOption == "OPT_TWINS_CONTRIVED")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_MAGIC_YES");
+    opts.add("OPT_MAGIC_NO");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_MAGIC");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Twins Fun -> Comedy of Errors"
+when
+    UserAnswer(questionId == "Q_TWINS_OPINION", selectedOption == "OPT_TWINS_FUN")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_COMEDY_ERRORS");
+    insert(r);
+end
+
+// =========================================================
+// === W¥TEK LEŒNY (FOREST) ===
+// =========================================================
+
+rule "Path: Forest YES -> Who in forest?"
+when
+    UserAnswer(questionId == "Q_FOREST", selectedOption == "OPT_FOREST_YES")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_SHEPHERDS");
+    opts.add("OPT_BANDITS");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_FOREST_WHO");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Shepherds -> As You Like It"
+when
+    UserAnswer(questionId == "Q_FOREST_WHO", selectedOption == "OPT_SHEPHERDS")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_AS_YOU_LIKE_IT");
+    insert(r);
+end
+
+rule "Rec: Bandits -> Two Gentlemen of Verona"
+when
+    UserAnswer(questionId == "Q_FOREST_WHO", selectedOption == "OPT_BANDITS")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TWO_GENTLEMEN");
+    insert(r);
+end
+
+rule "Rec: Forest NO -> The Merchant Of Venice"
+when
+    UserAnswer(questionId == "Q_FOREST", selectedOption == "OPT_FOREST_NO")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_MERCHANT");
+    insert(r);
+end
+
+// =========================================================
+// === W¥TEK MAGII ===
+// =========================================================
+
+rule "Path: Magic YES -> Magic Type"
+when
+    UserAnswer(questionId == "Q_MAGIC", selectedOption == "OPT_MAGIC_YES")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_MAGIC_OPINION_ILLUSION");
+    opts.add("OPT_MAGIC_OPINION_FAIRIES");
+    opts.add("OPT_MAGIC_OPINION_MIRACLES");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_MAGIC_OPINION");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Illusion -> Tempest"
+when
+    UserAnswer(questionId == "Q_MAGIC_OPINION", selectedOption == "OPT_MAGIC_OPINION_ILLUSION")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TEMPEST");
+    insert(r);
+end
+
+rule "Rec: Fairies -> Midsummer"
+when
+    UserAnswer(questionId == "Q_MAGIC_OPINION", selectedOption == "OPT_MAGIC_OPINION_FAIRIES")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_MIDSUMMER");
+    insert(r);
+end
+
+rule "Rec: Miracles -> Winter's Tale"
+when
+    UserAnswer(questionId == "Q_MAGIC_OPINION", selectedOption == "OPT_MAGIC_OPINION_MIRACLES")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_WINTERS_TALE");
+    insert(r);
+end
+
+rule "Path: Magic NO -> Lovers"
+when
+    UserAnswer(questionId == "Q_MAGIC", selectedOption == "OPT_MAGIC_NO")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_LOV_EDUCATED");
+    opts.add("OPT_LOV_QUARREL");
+    opts.add("OPT_LOV_RELUCTANT");
+    opts.add("OPT_LOV_MARRIED");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_LOVERS");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+// =========================================================
+// === W¥TEK KOCHANKÓW ===
+// =========================================================
+
+rule "Rec: Educated -> Loves Labours Lost"
+when
+    UserAnswer(questionId == "Q_LOVERS", selectedOption == "OPT_LOV_EDUCATED")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_LOVES_LABOURS");
+    insert(r);
+end
+
+rule "Rec: Married -> Merry Wives"
+when
+    UserAnswer(questionId == "Q_LOVERS", selectedOption == "OPT_LOV_MARRIED")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_MERRY_WIVES");
+    insert(r);
+end
+
+rule "Path: Quarrel -> Type"
+when
+    UserAnswer(questionId == "Q_LOVERS", selectedOption == "OPT_LOV_QUARREL")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_QUARREL_VIOLENT");
+    opts.add("OPT_QUARREL_ARGUE");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_QUARREL_TYPE");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Violent -> Taming of the Shrew"
+when
+    UserAnswer(questionId == "Q_QUARREL_TYPE", selectedOption == "OPT_QUARREL_VIOLENT")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TAMING_SHREW");
+    insert(r);
+end
+
+rule "Rec: Argue -> Much Ado"
+when
+    UserAnswer(questionId == "Q_QUARREL_TYPE", selectedOption == "OPT_QUARREL_ARGUE")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_MUCH_ADO");
+    insert(r);
+end
+
+rule "Path: Reluctant -> Nun"
+when
+    UserAnswer(questionId == "Q_LOVERS", selectedOption == "OPT_LOV_RELUCTANT")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_NUN_MAYBE");
+    opts.add("OPT_NUN_WEIRD");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_NUN");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Nun Maybe -> Measure for Measure"
+when
+    UserAnswer(questionId == "Q_NUN", selectedOption == "OPT_NUN_MAYBE")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_MEASURE");
+    insert(r);
+end
+
+rule "Rec: Nun Weird -> Alls Well"
+when
+    UserAnswer(questionId == "Q_NUN", selectedOption == "OPT_NUN_WEIRD")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_ALLS_WELL");
+    insert(r);
+end
+
+// =========================================================
+// === SEKCJA TRAGEDII (CRY) ===
+// =========================================================
+
+rule "Path: Revenge Best -> Death Toll"
+when
+    UserAnswer(questionId == "Q_REVENGE", selectedOption == "OPT_REV_BEST")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_DEATH_HIGH");
+    opts.add("OPT_DEATH_MODERATE");
+    opts.add("OPT_DEATH_LOW");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_DEATH_TOLL");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Death High -> Titus"
+when
+    UserAnswer(questionId == "Q_DEATH_TOLL", selectedOption == "OPT_DEATH_HIGH")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TITUS");
+    insert(r);
+end
+
+rule "Rec: Death Mod -> Hamlet"
+when
+    UserAnswer(questionId == "Q_DEATH_TOLL", selectedOption == "OPT_DEATH_MODERATE")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_HAMLET");
+    insert(r);
+end
+
+rule "Rec: Death Low -> Timon"
+when
+    UserAnswer(questionId == "Q_DEATH_TOLL", selectedOption == "OPT_DEATH_LOW")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TIMON");
+    insert(r);
+end
+
+rule "Path: Revenge Pointless -> Important"
+when
+    UserAnswer(questionId == "Q_REVENGE", selectedOption == "OPT_REV_POINTLESS")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_IMP_LOVE");
+    opts.add("OPT_IMP_FAMILY");
+    opts.add("OPT_IMP_POWER");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_IMPORTANT");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Path: Imp Love -> Love Type"
+when
+    UserAnswer(questionId == "Q_IMPORTANT", selectedOption == "OPT_IMP_LOVE")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_LOVE_STUPID");
+    opts.add("OPT_LOVE_MATURE");
+    opts.add("OPT_LOVE_JEALOUS");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_LOVE_TYPE");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Love Stupid -> Romeo and Juliet"
+when
+    UserAnswer(questionId == "Q_LOVE_TYPE", selectedOption == "OPT_LOVE_STUPID")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_ROMEO");
+    insert(r);
+end
+
+rule "Rec: Love Mature -> Antony and Cleopatra"
+when
+    UserAnswer(questionId == "Q_LOVE_TYPE", selectedOption == "OPT_LOVE_MATURE")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_ANTONY");
+    insert(r);
+end
+
+rule "Rec: Love Jealous -> Othello"
+when
+    UserAnswer(questionId == "Q_LOVE_TYPE", selectedOption == "OPT_LOVE_JEALOUS")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_OTHELLO");
+    insert(r);
+end
+
+rule "Path: Imp Family -> Parent"
+when
+    UserAnswer(questionId == "Q_IMPORTANT", selectedOption == "OPT_IMP_FAMILY")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_MUM");
+    opts.add("OPT_DAD");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_PARENT");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Mum -> Coriolanus"
+when
+    UserAnswer(questionId == "Q_PARENT", selectedOption == "OPT_MUM")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_CORIOLANUS");
+    insert(r);
+end
+
+rule "Rec: Dad -> King Lear"
+when
+    UserAnswer(questionId == "Q_PARENT", selectedOption == "OPT_DAD")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_LEAR");
+    insert(r);
+end
+
+rule "Path: Imp Power -> Work With"
+when
+    UserAnswer(questionId == "Q_IMPORTANT", selectedOption == "OPT_IMP_POWER")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_WORK_FRIENDS");
+    opts.add("OPT_WORK_SO");
+    opts.add("OPT_WORK_HATED");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_WORK_WITH");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Work Friends -> Julius Caesar"
+when
+    UserAnswer(questionId == "Q_WORK_WITH", selectedOption == "OPT_WORK_FRIENDS")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_JULIUS");
+    insert(r);
+end
+
+rule "Rec: Work SO -> Macbeth"
+when
+    UserAnswer(questionId == "Q_WORK_WITH", selectedOption == "OPT_WORK_SO")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_MACBETH");
+    insert(r);
+end
+
+rule "Rec: Work Hated -> Richard II"
+when
+    UserAnswer(questionId == "Q_WORK_WITH", selectedOption == "OPT_WORK_HATED")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_RICHARD_II");
+    insert(r);
+end
+
+// =========================================================
+// === SEKCJA HISTORII (SWORDS) ===
+// =========================================================
+
+rule "Path: History Yes/Dunno -> Excommunication"
+when
+    UserAnswer(questionId == "Q_HISTORY_OPINION", selectedOption == "OPT_HIST_YES") or
+    UserAnswer(questionId == "Q_HISTORY_OPINION", selectedOption == "OPT_HIST_DUNNO")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_EX_YES");
+    opts.add("OPT_EX_NO");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_EXCOMMUNICATION");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Classics -> Troilus"
+when
+    UserAnswer(questionId == "Q_HISTORY_OPINION", selectedOption == "OPT_HIST_CLASSICS")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TROILUS");
+    insert(r);
+end
+
+rule "Rec: Excommunication YES -> King John"
+when
+    UserAnswer(questionId == "Q_EXCOMMUNICATION", selectedOption == "OPT_EX_YES")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_KING_JOHN");
+    insert(r);
+end
+
+rule "Path: Excommunication NO -> Time"
+when
+    UserAnswer(questionId == "Q_EXCOMMUNICATION", selectedOption == "OPT_EX_NO")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_TIME_FEW");
+    opts.add("OPT_TIME_WEEK");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_TIME");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Path: Time Week -> Pref"
+when
+    UserAnswer(questionId == "Q_TIME", selectedOption == "OPT_TIME_WEEK")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_WEEK_AGE");
+    opts.add("OPT_WEEK_BATTLES");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_WEEK_PREF");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Week Age -> Henry IV"
+when
+    UserAnswer(questionId == "Q_WEEK_PREF", selectedOption == "OPT_WEEK_AGE")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_HENRY_IV");
+    insert(r);
+end
+
+rule "Rec: Week Battles -> Henry VI"
+when
+    UserAnswer(questionId == "Q_WEEK_PREF", selectedOption == "OPT_WEEK_BATTLES")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_HENRY_VI");
+    insert(r);
+end
+
+rule "Path: Time Few -> Good/Bad"
+when
+    UserAnswer(questionId == "Q_TIME", selectedOption == "OPT_TIME_FEW")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_GUYS_GOOD");
+    opts.add("OPT_GUYS_BAD");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_GOOD_BAD_GUYS");
+    q.setAnswers(opts);
+    insert(q);
+end
+
+rule "Rec: Good Guys -> Henry V"
+when
+    UserAnswer(questionId == "Q_GOOD_BAD_GUYS", selectedOption == "OPT_GUYS_GOOD")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_HENRY_V");
+    insert(r);
+end
+
+rule "Rec: Bad Guys -> Richard III"
+when
+    UserAnswer(questionId == "Q_GOOD_BAD_GUYS", selectedOption == "OPT_GUYS_BAD")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_RICHARD_III");
+    insert(r);
+end
+
+// =========================================================
+// === ALTERNATYWNA ŒCIE¯KA (furtka) ===
+// =========================================================
+
+rule "Alternative: Ask Classics"
+when
+    $rej : UserRejected()
+    not UiQuestion()
+    not UserAnswer(questionId == "Q_CLASSICS_PREF")
+then
+    ArrayList opts = new ArrayList();
+    opts.add("OPT_CLASSIC_SHIP");
+    opts.add("OPT_CLASSIC_CHAUCER");
+
+    UiQuestion q = new UiQuestion();
+    q.setId("Q_CLASSICS_PREF");
+    q.setAnswers(opts);
+    insert(q);
+
+    retract($rej);
+end
+
+rule "Alternative: Ships -> Pericles"
+when
+    UserAnswer(questionId == "Q_CLASSICS_PREF", selectedOption == "OPT_CLASSIC_SHIP")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_PERICLES");
+    insert(r);
+end
+
+rule "Alternative: Chaucer -> Two Noble Kinsmen"
+when
+    UserAnswer(questionId == "Q_CLASSICS_PREF", selectedOption == "OPT_CLASSIC_CHAUCER")
+then
+    Recommendation r = new Recommendation();
+    r.setRecId("REC_TWO_KINSMEN");
+    insert(r);
+end
+
+rule "Alternative: No more alternatives -> restart"
+when
+    $rej : UserRejected()
+    UserAnswer(questionId == "Q_CLASSICS_PREF")
+    not UiQuestion()
+    not Recommendation()
+then
+    UiCommand c = new UiCommand();
+    c.setName("RESTART_SESSION");
+    insert(c);
+
+    retract($rej);
+end
