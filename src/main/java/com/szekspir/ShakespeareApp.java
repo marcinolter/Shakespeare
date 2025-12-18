@@ -44,7 +44,7 @@ public class ShakespeareApp {
     public void init() throws Exception {
         String[] languages = {"Polski", "English"};
         int choice = JOptionPane.showOptionDialog(null, 
-                "Wybierz jêzyk / Choose language", "Start",
+                "Wybierz jÃªzyk / Choose language", "Start",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, languages, languages[0]);
 
         String jsonFile = (choice == 1) ? "data_en.json" : "data_pl.json";
@@ -72,9 +72,9 @@ public class ShakespeareApp {
             questions = (Map<String, Map<String, Object>>) root.get("questions");
             recommendations = (Map<String, Map<String, Object>>) root.get("recommendations");
             
-            System.out.println("Za³adowano zasoby: " + filename);
+            System.out.println("ZaÂ³adowano zasoby: " + filename);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "B³¹d ³adowania pliku: " + filename);
+            JOptionPane.showMessageDialog(null, "BÂ³Â¹d Â³adowania pliku: " + filename);
             System.exit(1);
         }
     }
@@ -128,7 +128,7 @@ public class ShakespeareApp {
         }
         
         if (!somethingFound) {
-            mainLabel.setText("B³¹d: Silnik nie zwróci³ ¿adnych danych.");
+            mainLabel.setText("BÂ³Â¹d: Silnik nie zwrÃ³ciÂ³ Â¿adnych danych.");
         }
         
         frame.revalidate();
@@ -200,7 +200,7 @@ public class ShakespeareApp {
                     
                     if (imgUrl != null) {
                         BufferedImage img = ImageIO.read(imgUrl);
-                        Image scaledImg = img.getScaledInstance(350, -1, Image.SCALE_SMOOTH);
+                        Image scaledImg = img.getScaledInstance(350, 350, Image.SCALE_SMOOTH);
                         JLabel imgLabel = new JLabel(new ImageIcon(scaledImg));
                         imgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
                         centerPanel.add(imgLabel);
@@ -209,7 +209,7 @@ public class ShakespeareApp {
                     }
                 }
             } catch (Exception ex) {
-                System.err.println("B³¹d ³adowania obrazka: " + ex.getMessage());
+                System.err.println("BÂ³Â¹d Â³adowania obrazka: " + ex.getMessage());
             }
 
 
