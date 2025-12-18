@@ -3,7 +3,7 @@
 ## Autorzy
 
 * Sebastian Zgoda - 147919
-* [Imię i Nazwisko] - [Numer indeksu]
+* Marcin Olter - 160095
 
 Projekt realizujący system doradczy oparty na regułach (Rule-Based Expert System), stworzony w języku Java z wykorzystaniem silnika wnioskowania Drools. Aplikacja prowadzi interaktywny dialog z użytkownikiem, aby na podstawie jego nastroju, preferencji fabularnych i opinii zarekomendować odpowiednią sztukę Williama Szekspira.
 
